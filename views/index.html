@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;    
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }      
+    </style>
+</head>
+
+<body>
+        <input id="search" type="text" name="fname"  >
+        <button >summit</button>
+
+
+        <table >
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th> 
+              <th>Age</th>
+            </tr>
+              <% for(var i=0; i < data.length; i++) {%>
+              <tr>
+                 <td>
+                    <img src="<%= data[i].avatar_url %>" width="100px" height="100px" alt=""> 
+                  </td>
+                 <td><%= data[i].login %></td>
+                 <td><%= data[i].url %></td>
+               </tr>
+              <% } %>
+          </table>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  document.body.addEventListener("click", event => {
+    if (event.target.nodeName == "BUTTON") {
+      // console.log("Clicked", document.getElementById('search').value)
+      location.replace(`http://localhost:3000/follower/${document.getElementById('search').value}`)
+    }
+  });
+</script>
+</html>
